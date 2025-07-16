@@ -3,8 +3,11 @@ import { PORT } from "./config/constants.js";
 import apiRoutes from "./routes/index.js";
 import { requestLogger, corsHandler } from "./middleware/common.js";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
+import job from "./config/cron.js";
 
 const app = express();
+
+job.start();
 
 // Middleware
 app.use(corsHandler);
